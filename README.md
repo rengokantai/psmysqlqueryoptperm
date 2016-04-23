@@ -45,17 +45,25 @@ show full processlist
 use db;
 select * from tb;
 ```
+######table order in join clause
+
+``
+explain extended select * ...
+```
 
 ######subquery vs exists vs joins 1
 subquery:
 ```
-select * from tba a where a.id in (select b.id from tbb b where tbbid...)
+select * from tba a where a.id in (select b.id from tbb b where tbbid<100)   // queryplan: 1000, 1, 100
 ```
 exists:
 ```
-select * from tba a where exists (select b.id from tbb b where tbbid... and b.id=a.id)   //better
+select * from tba a where exists (select b.id from tbb b where tbbid<100 and b.id=a.id)   //better. query plan: 1000,2
 ```
-
+join:
+```
+select distinct a.* from tba a inner join tbb b on b.id=a.id where tbbid<100   // queryplan: 100,1
+```
 ######tuning aggregate function
 these two queries:
 ```
