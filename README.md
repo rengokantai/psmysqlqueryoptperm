@@ -16,22 +16,45 @@ check various privileges,semantic like aliases, column name
 ### 7 Query Optimizer
 convert from parse tree created by parser or preprocessor to query plan.
 ### 8 Query Optimizer Responsibilities
-convert sub-optimal join type to efficient logic  
-reorder join tables  
-reducing constant expressions  
-optimizing alg rules  
-logic short circuit  
-optimal index usage  
-sort optimization  
-optimizing aggregate functions
+Query Optimizer Responsibilities
+- convert sub-optimal join type to efficient logic  
+- reorder join tables  
+- reducing constant expressions  
+- optimizing algebraic rules  
+- logic short circuit  
+- optimal index usage  
+- sort optimization  
+- optimizing aggregate functions
 ### 9 Query Optimizer Limitations
-No parallel query execution  
-No cinsideration to parallel running query  
-dependency on storage engine statistics  
-fastest executing query vs most resource optimized query
+Query Optimizer Limitations
+- No parallel query execution  
+- No cinsideration to parallel running query  
+- dependency on storage engine statistics  
+- fastest executing query vs most resource optimized query
+- Cost of stored routines(SP,function) are not often considered in the cost of operation
 ### 10 Query Execution Engine and Storage
+query cache->parser->preprocessor->query optimizer->query execution engine  
 executes the plan, which is byte code  
 however in case of mysql execution plan mysql follows the instruction given in a query execution plan to get desired result set
+### 12 Additional Notes on Query Optimizer
+Query Optimizer is a Cost Based Optimizer
+- selects the path using the least resouces
+MySQL execution plan is tree of instructions
+- Use explain extended  
+static optimization  
+
+### 13 Maximizing Query Optimizer Performance
+optimizing data access
+- previous module
+understanding query optimization
+- current module
+query re-write
+- next module
+
+### 14 Understanding Query States
+```
+show full processlist
+```
 
 ### 15 Demo: Show Full Processlist
 ```
