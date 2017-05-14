@@ -60,10 +60,29 @@ show full processlist
 ```
 show full processlist
 ```
+### 16 Understanding Explain Command
+```
+explain select query
+```
+fields:
+- id 
+- select_type 
+- table 
+- type 
+- possible_keys 
+- key
+- key_len
+- ref
+- rows
 
+### 17 Demo: Explain Command
+```
+explain extended 
+show warnings;
+```
 
-#####performance optimization by practical
-######Index used for select
+## 4. performance optimization by practical
+### 2 Index used for SELECT clause
 ```
 use db;
 select * from tb;
